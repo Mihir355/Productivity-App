@@ -1,0 +1,46 @@
+.home-page-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  flex-direction: row;
+  background-color: #1F1F1F;
+}
+
+.left-panel {
+  width: 70%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #1F1F1F;
+  color: #FFFFFF;
+}
+
+.right-panel {
+  width: 30%;
+  background-color: #2C2C2C;
+  color: #FFFFFF;
+}
+
+@media (max-width: 1024px) {
+  .home-page-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left-panel {
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .right-panel {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .left-panel {
+    padding: 1.5rem 1rem;
+  }
+}

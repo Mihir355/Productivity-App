@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'CustomFont2';
+  src: url('../assets/CustomFont2.otf');
+}
+
+@font-face {
+  font-family: 'CustomFont4';
+  src: url('../assets/CustomFont4.ttf') format('truetype');
+}
+
+.right-panel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeSlide 1.2s ease-out;
+  height: 100%;
+  background-color: #2C2C2C;
+  color: #FFFFFF;
+}
+
+.right-logo {
+  width: 250px;
+  margin-bottom: 1.5rem;
+}
+
+.company-name {
+  font-family: 'CustomFont2', sans-serif;
+  font-size: 6.0rem;
+  color: #607def;
+  margin: 1rem 0;
+}
+
+.company-quote {
+  font-family: 'CustomFont4', sans-serif;
+  font-size: 3.5rem;
+  color: #AAAAAA;
+}
+
+@keyframes fadeSlide {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
