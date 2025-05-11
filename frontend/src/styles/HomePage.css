@@ -1,12 +1,15 @@
+/* Make the whole page scroll vertically */
 .home-page-container {
   display: flex;
-  height: 100vh;
   width: 100%;
-  overflow: hidden;
+  min-height: 100vh;        /* At least full viewport height */
+  overflow: visible;        /* Allow page scroll */
   flex-direction: row;
   background-color: #1F1F1F;
+  position: relative;       /* For sticky positioning context */
 }
 
+/* Left panel grows naturally, no fixed height or scroll */
 .left-panel {
   width: 70%;
   padding: 3rem;
@@ -15,21 +18,28 @@
   justify-content: space-between;
   background-color: #1F1F1F;
   color: #FFFFFF;
+
+  height: auto;             /* Let it grow */
+  overflow: visible;        /* No internal scroll */
 }
 
+/* Right panel fixed on screen, no scroll */
 .right-panel {
   width: 30%;
   background-color: #2C2C2C;
   color: #FFFFFF;
+
+  position: sticky;         /* Stick to viewport while scrolling */
+  top: 0;
+  height: 100vh;            /* Full viewport height */
+  overflow: hidden;         /* No scroll */
 }
 
-/* 🔧 Responsive layout */
+/* Responsive layout */
 @media (max-width: 1024px) {
   .home-page-container {
     flex-direction: column;
-    height: auto;            /* Let it grow as needed */
-    min-height: 100vh;       /* Ensure it covers full screen */
-    background-color: #1F1F1F;
+    min-height: auto;       /* Let it grow */
   }
 
   .left-panel {

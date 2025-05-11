@@ -79,3 +79,18 @@
     opacity: 1;
   }
 }
+
+.auth-toggle-text {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #aaaaaa;
+}
+
+.auth-toggle-text span {
+  color: #607def;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 0.3rem;
+  text-decoration: underline;
+}
