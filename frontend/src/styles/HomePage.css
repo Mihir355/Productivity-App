@@ -23,10 +23,13 @@
   color: #FFFFFF;
 }
 
+/* 🔧 Responsive layout */
 @media (max-width: 1024px) {
   .home-page-container {
     flex-direction: column;
-    height: auto;
+    height: auto;            /* Let it grow as needed */
+    min-height: 100vh;       /* Ensure it covers full screen */
+    background-color: #1F1F1F;
   }
 
   .left-panel {
