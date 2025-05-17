@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "../styles/AuthBox.css";
 
-const AuthBox = () => {
+const AuthBox = ({ onLoginSuccess }) => {
   const [isSignup, setIsSignup] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -18,14 +19,42 @@ const AuthBox = () => {
     setIsSignup((prev) => !prev);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isSignup) {
-      // handle signup logic here
-      console.log("Signing up with:", formData);
-    } else {
-      // handle login logic here
-      console.log("Logging in with:", formData);
+
+    try {
+      const BASE_URL = "http://localhost:5000";
+
+      if (isSignup) {
+        if (formData.password !== formData.confirmPassword) {
+          alert("Passwords do not match");
+          return;
+        }
+
+        const res = await axios.post(`${BASE_URL}/api/auth/signup`, {
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+        });
+
+        if (res.data.success) {
+          localStorage.setItem("token", res.data.token);
+          onLoginSuccess();
+        }
+      } else {
+        const res = await axios.post(`${BASE_URL}/api/auth/login`, {
+          email: formData.email,
+          password: formData.password,
+        });
+
+        if (res.data.success) {
+          localStorage.setItem("token", res.data.token);
+          onLoginSuccess();
+        }
+      }
+    } catch (err) {
+      console.error(err);
+      alert(err.response?.data?.message || "An error occurred.");
     }
   };
 
